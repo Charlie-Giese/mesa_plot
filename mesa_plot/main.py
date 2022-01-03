@@ -23,7 +23,7 @@ class mesa_plot():
         """Load History data"""
 
         log_dir = mr.MesaLogDir(self.mesa_log_dir)
-        history_data = mr.MesaData(self.mesa_log_dir+'history.data')
+        history_data = mr.MesaData(self.mesa_log_dir+'/history.data')
         return history_data
 
     def load_profile(self):
