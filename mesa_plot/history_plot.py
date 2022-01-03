@@ -10,13 +10,11 @@ import os
 
 
 
-class mesa_plot():
+class history_plot():
     """Class for plotting outputs from MESA 1-D stellar evolution code"""
 
     def __init__(self, mesa_log_dir = os.getcwd(), mesa_profile = None):
         self.mesa_log_dir = mesa_log_dir
-        self.mesa_profile = mesa_profile
-
 
 
     def load_history(self):
@@ -25,13 +23,6 @@ class mesa_plot():
         log_dir = mr.MesaLogDir(self.mesa_log_dir)
         history_data = mr.MesaData(self.mesa_log_dir+'/history.data')
         return history_data
-
-    def load_profile(self):
-        """Load requisite profile"""
-
-        profile = log_dir.profile_data(profile_number = mesa_profile)
-        return profile
-
 
     def plot_hr_diagram(self):
 

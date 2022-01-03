@@ -1,11 +1,10 @@
-Metadata-Version: 2.1
+Metadata-Version: 1.0
 Name: mesa-plot
 Version: 1.0
 Summary: Module to plot mesa output
-Home-page: UNKNOWN
-Author: Charlie-Giese
-License: UNKNOWN
+Home-page: https://github.com/Charlie-Giese/mesa_plot
+Author: Charlie Giese
+Author-email: giesec@tcd.ie
+License: MIT
+Description: UNKNOWN
 Platform: UNKNOWN
-
-UNKNOWN
-
