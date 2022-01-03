@@ -57,9 +57,8 @@ class profile_plot():
         radius = df['radius']
 
         fig, axs = plt.subplots(2,1)
-        axs[0].plot(radius, logT, label = '$Log(T)$', c='r')
-        axs[0].plot(radius, opacity, label = '$Opacity$', c='k')
-        #axs[0].legend()
-        axs[1].plot(radius, logL, label = '$Log(L)$', c='k')
-        axs[1].plot(radius, logRho, label = '$Log(\rho)$', c='r')
-        #axs[1].legend()
+        axs[0].plot(radius, logT, label = 'Log(T)', c='r')
+        axs[0].plot(radius, opacity, label = 'Opacity', c='k')
+        
+        axs[1].plot(radius, logL, label = 'Log(L)', c='k')
+        axs[1].plot(radius, logRho, label = 'Log(\rho)', c='r')

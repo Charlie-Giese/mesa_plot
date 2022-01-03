@@ -34,9 +34,9 @@ class history_plot():
 
         plt.plot(T_eff, L, c = 'k')
         plt.xlim(plt.xlim()[::-1])
-        plt.xlabel('$log(T_{eff})$')
-        plt.ylabel('$log(L)$')
-        plt.title('$ %s M_{\odot}$ HR Diagram$' % star_mass)
+        plt.xlabel('log(T)')
+        plt.ylabel('log(L)')
+        plt.title(' %s Solar Mass HR Diagram' % star_mass)
 
     def plot_T_rho(self):
         """This function creates an evolutionary track in the density-temperature plane"""
@@ -48,6 +48,6 @@ class history_plot():
         rho_c = history_data.log_center_Rho
 
         plt.plot(rho_c, T_c, c='k')
-        plt.xlabel('$\rho_C$')
-        plt.ylabel('$T_C$')
-        plt.title('$ %s M_{\odot}$' %star_mass)
+        plt.xlabel('rho_C')
+        plt.ylabel('T_C')
+        plt.title(' %s Solar Masses' %star_mass)
