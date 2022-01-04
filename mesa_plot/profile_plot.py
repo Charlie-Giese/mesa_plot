@@ -80,3 +80,33 @@ class profile_plot():
         plt.plot(density, pressure, c='k')
         plt.xlabel('Density')
         plt.ylabel('Pressure')
+
+    def mass_temp(self):
+        df = self.load_profile()
+
+        mass = df['mass']
+        T = np.exp(df['logT'])
+        plt.plot(mass, T, c='k')
+        plt.xlabel('Mass')
+        plt.ylabel('T')
+
+
+    def opacity(self):
+        df = self.load_profile()
+
+        opacity = df['opacity']
+        mass = df['mass']
+
+        plt.plot(mass, opacity, c='k')
+        plt.xlabel('mass')
+        plt.ylabel('opacity')
+
+    def lum_mass(self):
+        df = self.load_profile()
+
+        lum = np.exp(df['logL'])
+        mass = df['mass']
+
+        plt.plot(mass, lum, c='k')
+        plt.xlabel('mass')
+        plt.ylabel('l')
