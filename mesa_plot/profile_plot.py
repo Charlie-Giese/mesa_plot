@@ -26,6 +26,12 @@ class profile_plot():
         df = pd.read_table(self.mesa_log_dir+"/profile"+str(self.mesa_profile)+'.data', sep="\s+", header = 4)
         return df
 
+    def load_metadata(self):
+
+        df = pd.read_table(self.mesa_log_dir+'/profile'+str(self.mesa_profile)+'.data', sep="\s+", header = 1, nrows = 1)
+        return df
+
+
     def plot_massfrac(self):
         """Plot profile of mass fraction inside star"""
 
