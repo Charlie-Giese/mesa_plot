@@ -23,7 +23,7 @@ class profile_plot():
         """Load requisite profile"""
 
         log_dir = mr.MesaLogDir(self.mesa_log_dir)
-        df = pd.read_table(self.mesa_log_dir+"profile"+str(self.mesa_profile)+'.data', sep="\s+", header = 4)
+        df = pd.read_table(self.mesa_log_dir+"/profile"+str(self.mesa_profile)+'.data', sep="\s+", header = 4)
         return df
 
     def plot_massfrac(self):
