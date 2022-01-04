@@ -20,7 +20,6 @@ class history_plot():
     def load_history(self):
         """Load History data"""
 
-        log_dir = mr.MesaLogDir(self.mesa_log_dir)
         history_data = mr.MesaData(self.mesa_log_dir+'/history.data')
         return history_data
 
