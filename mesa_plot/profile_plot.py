@@ -14,7 +14,7 @@ import pandas as pd
 class profile_plot():
     """Class for plotting outputs from MESA 1-D stellar evolution code"""
 
-    def __init__(self, mesa_log_dir = os.getcwd(), mesa_profile = None):
+    def __init__(self, mesa_log_dir = os.getcwd()+'/LOGS', mesa_profile = None):
         self.mesa_log_dir = mesa_log_dir
         self.mesa_profile = mesa_profile
 
@@ -59,6 +59,6 @@ class profile_plot():
         fig, axs = plt.subplots(2,1)
         axs[0].plot(radius, logT, label = 'Log(T)', c='r')
         axs[0].plot(radius, opacity, label = 'Opacity', c='k')
-        
+
         axs[1].plot(radius, logL, label = 'Log(L)', c='k')
         axs[1].plot(radius, logRho, label = 'Log(\rho)', c='r')

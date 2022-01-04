@@ -13,7 +13,7 @@ import os
 class history_plot():
     """Class for plotting outputs from MESA 1-D stellar evolution code"""
 
-    def __init__(self, mesa_log_dir = os.getcwd(), mesa_profile = None):
+    def __init__(self, mesa_log_dir = os.getcwd()+'/LOGS', mesa_profile = None):
         self.mesa_log_dir = mesa_log_dir
 
 
