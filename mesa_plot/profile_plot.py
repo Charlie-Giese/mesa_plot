@@ -69,3 +69,14 @@ class profile_plot():
 
         axs[1].plot(radius, logL, label = 'Log(L)', c='k')
         axs[1].plot(radius, logRho, label = 'Log(\rho)', c='r')
+
+
+    def P_rho(self):
+        df = self.load_profile()
+
+        pressure = np.exp(df['logP'])
+        density = np.exp(df['logRho'])
+
+        plt.plot(density, pressure, c='k')
+        plt.xlabel('Density')
+        plt.ylabel('Pressure')
