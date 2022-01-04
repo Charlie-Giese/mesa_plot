@@ -22,7 +22,7 @@ class profile_plot():
     def load_profile(self):
         """Load requisite profile"""
 
-        df = pd.read_table("profile"+str(self.mesa_profile)+'.data', sep="\s+", header = 4)
+        df = pd.read_table(mesa_log_dir+"profile"+str(self.mesa_profile)+'.data', sep="\s+", header = 4)
         return df
 
     def plot_massfrac(self):
