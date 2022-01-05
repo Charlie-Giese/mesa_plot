@@ -193,28 +193,32 @@ class ZAMS_TAMS():
     def __init__(self, mesa_log_dir = os.getcwd()+'/LOGS'):
         self.mesa_log_dir = mesa_log_dir
 
-    import os
+    def calc_points(self):
 
-    path, dirs, files = next(os.walk(self.mesa_log_dir))
-    file_count = len(files) -3
+        import os
 
-    def turningpoints(lst):
-        dx = np.diff(lst)
-        return np.sum(dx[1:] * dx[:-1] < 0)
+        path, dirs, files = next(os.walk(self.mesa_log_dir))
+        file_count = len(files) -3
 
-    power = np.zeros(shape=(file_count))
+        def turningpoints(lst):
+            dx = np.diff(lst)
+            return np.sum(dx[1:] * dx[:-1] < 0)
+
+        power = np.zeros(shape=(file_count))
 
 
-    for i in range(1, file_count):
-        profile = profile_plot(mesa_profile=i)
-        meta_data = profile.load_metadata()
-        H_power = meta_data['power_h_burn'].values
-        power[i-1] = H_power
-
-    for p in range(0, file_count-1):
-        if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) > 0:
-            print('ZAMS is profile %i' %p)
-
-    for p in range(0, file_count-1):
-        if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) < 0:
-            print('TAMS is profile %i' %p)
+        for i in range(1, file_count):
+            profile = profile_plot(mesa_profile=i)
+            meta_data = profile.load_metadata()
+            H_power = meta_data['power_h_burn'].values
+            power[i-1] = H_power
+        points = []
+        for p in range(0, file_count-1):
+            if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) > 0:
+                print('ZAMS is profile %i' %p)
+                points[0] = power[p]
+        for p in range(0, file_count-1):
+            if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) < 0:
+                print('TAMS is profile %i' %p)
+                points[1] = power[p]
+        return points 
