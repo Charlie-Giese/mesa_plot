@@ -75,10 +75,12 @@ class history_plot():
 
         age = history_data.star_age
 
-        labels = ['LH', 'LHe', 'LZ', 'pp', 'cno', 'tri_alfa']
-        i=0
-        for lum in [LH, LHe, LZ, pp, cno, tri_alfa]:
-            plt.plot(age, lum, label = labels[i])
-            plt.ylim(-5,0)
-            plt.legend()
-            i+=1
+        fig, axs = plt.subplots(2,1)
+        axs[0].plot(age, LH, label = 'H Luminosity', c='k')
+        axs[0].plot(age, LHE, label = 'He Luminosity', c='r')
+        axs[0].plot(age, LZ, label = 'Z Luminosity', c='b')
+
+
+        axs[1].plot(age, pp, label = 'PP Cycle', c='k')
+        axs[1].plot(age, cno, label = 'CNO Cycle', c='r')
+        axs[1].plot(age, tri_alfa, label = 'Triple Alpha', c='b')        
