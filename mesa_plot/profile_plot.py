@@ -104,7 +104,7 @@ class profile_plot():
         mass = df['mass']
 
         plt.plot(mass, opacity, c='k')
-        plt.xlabel('mass')
+        plt.xlabel('Mass (m/M)')
         plt.ylabel('opacity')
 
     def lum_mass(self):
@@ -114,5 +114,5 @@ class profile_plot():
         mass = df['mass']
 
         plt.plot(mass, lum, c='k')
-        plt.xlabel('mass')
+        plt.xlabel('Mass (m/M)')
         plt.ylabel('l')
