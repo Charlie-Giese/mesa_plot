@@ -79,10 +79,10 @@ class history_plot():
         axs[0].plot(age, LH, label = 'H Luminosity', c='k')
         axs[0].plot(age, LHe, label = 'He Luminosity', c='r')
         axs[0].plot(age, LZ, label = 'Z Luminosity', c='b')
-
+        plt.legend()
+        plt.title('Energy Production for 0.4 $M_{\odot}$')
 
         axs[1].plot(age, pp, label = 'PP Cycle', c='k')
         axs[1].plot(age, cno, label = 'CNO Cycle', c='r')
         axs[1].plot(age, tri_alfa, label = 'Triple Alpha', c='b')
         plt.legend()
-        plt.title('Energy Production for 0.4 $M_{\odot}$')
