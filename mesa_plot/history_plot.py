@@ -60,3 +60,25 @@ class history_plot():
         plt.xlabel('rho_C')
         plt.ylabel('T_C')
         plt.title(' %s Solar Masses' %star_mass)
+
+    def energy_production(self):
+
+        history_data = self.load_history()
+
+        LH = history_data.log_LHe
+        LHe = history_data.log_LHe
+        LZ = history_data.log_LHe
+
+        pp = history_data.pp
+        cno = history_data.cno
+        tri_alfa = history_data.tri_alfa
+
+        age = history_data.star_age
+
+        labels = ['LH', 'LHe', 'LZ', 'pp', 'cno', 'tri_alfa']
+        i=0
+        for lum in [LH, LHe, LZ, pp, cno, tri_alfa]:
+            plt.plot(age, lum, label = labels[i])
+            plt.ylim(-5,0)
+            plt.legend()
+            i+=1
