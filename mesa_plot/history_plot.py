@@ -77,10 +77,10 @@ class history_plot():
 
         fig, axs = plt.subplots(2,1)
         axs[0].plot(age, LH, label = 'H Luminosity', c='k')
-        axs[0].plot(age, LHE, label = 'He Luminosity', c='r')
+        axs[0].plot(age, LHe, label = 'He Luminosity', c='r')
         axs[0].plot(age, LZ, label = 'Z Luminosity', c='b')
 
 
         axs[1].plot(age, pp, label = 'PP Cycle', c='k')
         axs[1].plot(age, cno, label = 'CNO Cycle', c='r')
-        axs[1].plot(age, tri_alfa, label = 'Triple Alpha', c='b')        
+        axs[1].plot(age, tri_alfa, label = 'Triple Alpha', c='b')
