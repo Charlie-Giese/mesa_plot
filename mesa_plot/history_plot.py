@@ -8,7 +8,7 @@ import mesa_reader as mr
 import os
 
 plt.rcParams['axes.titlesize'] = 16
-plt.rcParams['title_fontsize'] = 12
+plt.rcParams['title.fontsize'] = 12
 plt.rcParams['xtick.labelsize'] = 12
 plt.rcParams['ytick.labelsize'] = 12
 plt.rcParams['axes.labelsize'] = 12
