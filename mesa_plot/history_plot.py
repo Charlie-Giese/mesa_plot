@@ -13,6 +13,8 @@ plt.rcParams['ytick.labelsize'] = 12
 plt.rcParams['axes.labelsize'] = 12
 plt.rcParams['font.size'] = 10
 plt.rcParams['figure.titlesize'] = 18
+plt.rcParams['axes.labelsize'] = 12
+
 
 
 
