@@ -216,9 +216,10 @@ class ZAMS_TAMS():
         for p in range(0, file_count-1):
             if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) > 0:
                 print('ZAMS is profile %i' %p)
+                print(power[p])
                 points[0] = power[p]
         for p in range(0, file_count-1):
             if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) < 0:
                 print('TAMS is profile %i' %p)
                 points[1] = power[p]
-        return points 
+        return points
