@@ -87,6 +87,7 @@ class history_plot():
         axs[1].set_xlabel('Stellar Age (Years)')
 
 
+
 class profile_plot():
     """Class for plotting outputs from MESA 1-D stellar evolution code"""
 
@@ -186,3 +187,34 @@ class profile_plot():
         plt.plot(mass, lum, c='k')
         plt.xlabel('Mass (m/M)')
         plt.ylabel('l')
+
+class ZAMS_TAMS():
+
+    def __init__(self, mesa_log_dir = os.getcwd()+'/LOGS'):
+        self.mesa_log_dir = mesa_log_dir
+
+    import os
+
+    path, dirs, files = next(os.walk(self.mesa_log_dir))
+    file_count = len(files) -3
+
+    def turningpoints(lst):
+        dx = np.diff(lst)
+        return np.sum(dx[1:] * dx[:-1] < 0)
+
+    power = np.zeros(shape=(file_count))
+
+
+    for i in range(1, file_count):
+        profile = profile_plot(mesa_profile=i)
+        meta_data = profile.load_metadata()
+        H_power = meta_data['power_h_burn'].values
+        power[i-1] = H_power
+
+    for p in range(0, file_count-1):
+        if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) > 0:
+            print('ZAMS is profile %i' %p)
+
+    for p in range(0, file_count-1):
+        if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) < 0:
+            print('TAMS is profile %i' %p)
