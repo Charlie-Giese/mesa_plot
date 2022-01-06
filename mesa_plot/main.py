@@ -86,6 +86,55 @@ class history_plot():
         axs[1].set_ylabel('$Log(L/L_{\odot})$')
         axs[1].set_xlabel('Stellar Age (Years)')
 
+    def abundances(self):
+
+        h = self.load_history()
+
+        center_h1 = h.center_h1
+        center_he4 = h.center_he4
+        center_c12 = h.center_c12
+        center_n14 = h.center_n14
+        center_o16 = h.center_o16
+        center_fe56 = h.center_fe56
+
+        surface_h1 = h.surface_h1
+        surface_he3 = h.surface_he3
+        surface_c12 = h.surface_c12
+        surface_n14 = h.surface_n14
+        surface_o16 = h.surface_o16
+        surface_fe56 = h.surface_fe56
+
+        star_age = h.star_age
+
+        fig = plt.figure()
+        axc = fig.add_subplot(121)
+        axs = fig.add_subplot(122)
+        axc.set_xscale('log')
+        axs.set_xscale('log')
+        axc.set_yscale('log')
+        axs.set_yscale('log')
+        axc.set_xlabel('Stellar Age (Years)')
+        axs.set_xlabel('Stellar Age (Years)')
+        axc.set_ylabel('Abundance')
+
+        axc.plot(star_age, center_h1, label = 'H1, Centre')
+        axc.plot(star_age, center_he4, label = 'He4, Centre')
+        axc.plot(star_age, center_c12, label = 'C12, Centre')
+        axc.plot(star_age, center_n14, label = 'N14, Centre')
+        axc.plot(star_age, center_o16, label = 'O16, Centre')
+        axc.plot(star_age, center_fe56, label = 'Fe56, Centre')
+
+        axs.plot(star_age, surface_h1, label = 'H1, Surface')
+        axs.plot(star_age, surface_he4, label = 'He4, Surface')
+        axs.plot(star_age, surface_c12, label = 'C12, Surface')
+        axs.plot(star_age, surface_n14, label = 'N14, Surface')
+        axs.plot(star_age, surface_o16, label = 'O16, Surface')
+        axs.plot(star_age, surface_fe56, label = 'Fe56, Surface')
+
+        axc.legend()
+        axs.legend()
+
+
 class profile_plot():
     """Class for plotting outputs from MESA 1-D stellar evolution code"""
 
@@ -243,7 +292,7 @@ class ZAMS_TAMS():
         ax.set_yscale('log')
         ax.plot(model_number, central_H1, c='k')
         ax.set_ylabel('Central H1 Abundance')
-        ax.set_xlabel('Stellar Age (Years)')
+        ax.set_xlabel('Model Number')
 
 
         ax2 = fig.add_subplot(212)
@@ -251,4 +300,5 @@ class ZAMS_TAMS():
         ax2.set_yscale('log')
         ax2.plot(model_number, pp, label = 'PP Chain')
         ax2.plot(model_number, cno, label = 'CNO Cycle')
+        ax2.set_xlabel('Model Number')
         ax2.legend()
