@@ -245,7 +245,7 @@ class ZAMS_TAMS():
         ax.set_xlabel('Stellar Age (Years)')
 
 
-        ax2 = fig.add_subplot(212)
-        ax2.plot(star_age, radius)
-        ax2.set_xscale('log')
-        ax2.set_yscale('log')
+        #ax2 = fig.add_subplot(212)
+        ax.plot(star_age, radius)
+        #ax2.set_xscale('log')
+        #ax2.set_yscale('log')
