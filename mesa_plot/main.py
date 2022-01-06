@@ -39,8 +39,8 @@ class history_plot():
 
         plt.plot(T_eff, L, c = 'k')
         plt.xlim(plt.xlim()[::-1])
-        plt.xlabel('log(T)')
-        plt.ylabel('log(L)')
+        plt.xlabel('log(T) (K)')
+        plt.ylabel('log(L) (L/L_solar)')
         plt.title(' %s Solar Mass HR Diagram' % star_mass)
 
     def plot_T_rho(self):
