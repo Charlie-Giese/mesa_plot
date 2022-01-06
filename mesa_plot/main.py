@@ -213,7 +213,7 @@ class profile_plot():
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(mass, conv_vel)
-        ax.set_xscale('Mass (m/M)')
+        ax.set_xlabel('Mass (m/M)')
 
     def P_rho(self):
         df = self.load_profile()
