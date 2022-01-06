@@ -203,7 +203,7 @@ class ZAMS_TAMS():
         star_age = np.zeros_like(h_power)
 
         h = history_plot()
-        data = history_plot.load_history()
+        data = history_plot.load_history(self)
         r = data.radius #rsun
 
 
@@ -241,4 +241,3 @@ class ZAMS_TAMS():
 
         ax2 = fig.add_subplot(212)
         ax2.plot(star_age, radius)
-        
