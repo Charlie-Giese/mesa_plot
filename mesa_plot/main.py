@@ -225,8 +225,7 @@ class ZAMS_TAMS():
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        print(star_age, h_power, power_nuc)
-        ax.loglog(star_age, h_power, c='k')
-        ax.loglog(star_age, power_nuc, c='r')
+        ax.loglog(star_age, h_power, '--r', c='k')
+        ax.loglog(star_age, power_nuc, '--r', c='r')
         ax.set_xlabel('Stellar Age (Years)')
         ax.set_ylabel('Power')
