@@ -230,6 +230,6 @@ class ZAMS_TAMS():
         ax.set_xscale('log')
         ax.set_yscale('log')
         ax.scatter(star_age[indices], h_power[indices], c='k')
-        ax.scatter(star_age[indices], power_nuc[indices], c='r')
+        ax.plot(star_age[indices], power_nuc[indices], '--r', c='r')
         ax.set_ylabel('Power')
         ax.set_xlabel('Stellar Age (Years)')
