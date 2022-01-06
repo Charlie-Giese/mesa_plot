@@ -237,7 +237,7 @@ class ZAMS_TAMS():
 
         fig = plt.figure()
         ax = fig.add_subplot(211)
-        #ax.set_xscale('log')
+        ax.set_xscale('log')
         #ax.set_yscale('log')
         ax.scatter(star_age, lh, c='k')
         #ax.plot(star_age[indices], power_nuc[indices], '--r', c='r')
