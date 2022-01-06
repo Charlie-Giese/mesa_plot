@@ -222,7 +222,6 @@ class ZAMS_TAMS():
                 indices[1] = p
                 break
         """
-        print('Profiles %i to %i were used' %1 %file_count)
         indices  = np.argwhere(power_nuc > 1e-3)
 
         fig = plt.figure()
