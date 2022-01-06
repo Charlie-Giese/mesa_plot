@@ -61,7 +61,7 @@ class history_plot():
 
         history_data = self.load_history()
 
-        LH = history_data.log_LHe
+        LH = history_data.log_LH
         LHe = history_data.log_LHe
 
         pp = history_data.pp
@@ -75,7 +75,7 @@ class history_plot():
         axs[0].plot(age, LHe, label = 'He Luminosity', c='r')
 
         axs[0].legend()
-        axs[0].set_title('Energy Production for 0.4 $M_{\odot}$')
+        axs[0].set_title('Energy Production$')
         axs[0].set_ylabel('$Log(L/L_{\odot})$')
 
         axs[1].plot(age, pp, label = 'PP Cycle', c='k')
