@@ -63,8 +63,7 @@ class history_plot():
 
         LH = history_data.log_LHe
         LHe = history_data.log_LHe
-        LZ = history_data.log_LHe
-        print(LH, LHe, LZ)
+
         pp = history_data.pp
         cno = history_data.cno
         tri_alfa = history_data.tri_alfa
@@ -74,7 +73,7 @@ class history_plot():
         fig, axs = plt.subplots(2,1)
         axs[0].plot(age, LH, label = 'H Luminosity', c='k')
         axs[0].plot(age, LHe, label = 'He Luminosity', c='r')
-        axs[0].plot(age, LZ, label = 'Z Luminosity', c='b')
+
         axs[0].legend()
         axs[0].set_title('Energy Production for 0.4 $M_{\odot}$')
         axs[0].set_ylabel('$Log(L/L_{\odot})$')
