@@ -205,7 +205,7 @@ class ZAMS_TAMS():
         h = history_plot()
         data = history_plot.load_history(self)
         r = data.radius #rsun
-
+        age = data.star_age
 
 
         for i in range(1, file_count):
@@ -240,4 +240,4 @@ class ZAMS_TAMS():
         ax.set_xlabel('Stellar Age (Years)')
 
         ax2 = fig.add_subplot(212)
-        ax2.plot(star_age, r)
+        ax2.plot(age, r)
