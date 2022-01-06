@@ -230,7 +230,6 @@ class ZAMS_TAMS():
         plt.xscale('log')
         plt.yscale('log')
         plt.xlabel('Stellar Age (Years)')
-        plt.ylabel('')
-        plt.xlim(1e8, 1e12)
+        plt.ylabel('Power from Hydrogen Burning')
         plt.axvline(star_age[indices[0]])
         plt.axvline(star_age[indices[1]])
