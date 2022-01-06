@@ -122,7 +122,7 @@ class history_plot():
         axc.plot(star_age, center_n14, label = 'N14, Centre')
         axc.plot(star_age, center_o16, label = 'O16, Centre')
         axc.plot(star_age, center_fe56, label = 'Fe56, Centre')
-        axc.set_xlim(1e-5, 1)
+        axc.set_ylim(1e-5, 1)
 
         axs.plot(star_age, surface_h1, label = 'H1, Surface')
         axs.plot(star_age, surface_he4, label = 'He4, Surface')
