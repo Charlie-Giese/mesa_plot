@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import mesa_reader as mr
 import os
 import pandas as pd
-import astropy.constant as c
+import astropy.constants as c
 
 plt.rcParams['axes.titlesize'] = 16
 plt.rcParams['xtick.labelsize'] = 12
@@ -214,7 +214,7 @@ class profile_plot():
         ax = fig.add_subplot(111)
         ax.plot(mass, conv_vel)
         ax.set_xscale('Mass (m/M)')
-        
+
     def P_rho(self):
         df = self.load_profile()
 
