@@ -199,7 +199,7 @@ class ZAMS_TAMS():
 
         path, dirs, files = next(os.walk(self.mesa_log_dir))
         file_count = len(files) -3
-
+        print(file_count)
         def turningpoints(lst):
             dx = np.diff(lst)
             return np.sum(dx[1:] * dx[:-1] < 0)
