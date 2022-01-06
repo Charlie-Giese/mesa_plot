@@ -102,7 +102,6 @@ class history_plot():
         surface_c12 = h.surface_c12
         surface_n14 = h.surface_n14
         surface_o16 = h.surface_o16
-        surface_fe56 = h.surface_fe56
 
         star_age = h.star_age
 
@@ -129,7 +128,7 @@ class history_plot():
         axs.plot(star_age, surface_c12, label = 'C12, Surface')
         axs.plot(star_age, surface_n14, label = 'N14, Surface')
         axs.plot(star_age, surface_o16, label = 'O16, Surface')
-        axs.plot(star_age, surface_fe56, label = 'Fe56, Surface')
+
 
         axc.legend()
         axs.legend()
