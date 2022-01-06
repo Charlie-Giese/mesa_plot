@@ -86,8 +86,6 @@ class history_plot():
         axs[1].set_ylabel('$Log(L/L_{\odot})$')
         axs[1].set_xlabel('Stellar Age (Years)')
 
-
-
 class profile_plot():
     """Class for plotting outputs from MESA 1-D stellar evolution code"""
 
@@ -193,7 +191,7 @@ class ZAMS_TAMS():
     def __init__(self, mesa_log_dir = os.getcwd()+'/LOGS'):
         self.mesa_log_dir = mesa_log_dir
 
-    def calc_points(self):
+    def plot(self):
 
         import os
 
@@ -228,9 +226,7 @@ class ZAMS_TAMS():
                 indices[1] = p
                 break
         """
-        print(star_age)
-        print(h_power)
-        print(power_nuc)
+
         plt.scatter(star_age, h_power)
         plt.scatter(star_age, power_nuc)
         plt.xscale('log')
