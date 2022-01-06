@@ -98,7 +98,7 @@ class history_plot():
         center_fe56 = h.center_fe56
 
         surface_h1 = h.surface_h1
-        surface_he3 = h.surface_he3
+        surface_he4 = h.surface_he4
         surface_c12 = h.surface_c12
         surface_n14 = h.surface_n14
         surface_o16 = h.surface_o16
