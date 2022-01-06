@@ -71,12 +71,18 @@ class history_plot():
         age = history_data.star_age
 
         fig, axs = plt.subplots(2,1)
+
+        for ax in axs:
+            ax.set_xscale('log')
+            ax.set_yscale('log')
+
         axs[0].plot(age, LH, label = 'H Luminosity', c='k')
         axs[0].plot(age, LHe, label = 'He Luminosity', c='r')
 
         axs[0].legend()
         axs[0].set_title('Energy Production$')
         axs[0].set_ylabel('$Log(L/L_{\odot})$')
+
 
         axs[1].plot(age, pp, label = 'PP Cycle', c='k')
         axs[1].plot(age, cno, label = 'CNO Cycle', c='r')
