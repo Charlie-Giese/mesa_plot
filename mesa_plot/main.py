@@ -228,12 +228,9 @@ class ZAMS_TAMS():
                 indices[1] = p
                 break
 
-        print(h_power)
         plt.scatter(star_age, h_power, c='k')
         plt.scatter(star_age, power_nuc, c='r')
         plt.xscale('log')
         plt.yscale('log')
         plt.xlabel('Stellar Age (Years)')
         plt.ylabel('Power')
-        #plt.axvline(star_age[indices[0]])
-        #plt.axvline(star_age[indices[1]])
