@@ -241,7 +241,7 @@ class ZAMS_TAMS():
         ax = fig.add_subplot(211)
         ax.set_xscale('log')
         ax.set_yscale('log')
-        ax.scatter(model_number, central_H1, c='k', s=10)
+        ax.plot(model_number, central_H1, c='k', s=10)
         ax.set_ylabel('Central H1 Abundance')
         ax.set_xlabel('Stellar Age (Years)')
 
