@@ -205,10 +205,11 @@ class ZAMS_TAMS():
 
         h = history_plot()
         data = h.load_history()
-        lh = data.log_LH
+        central_H1 = data.center_h1
+        pp = data.pp
+        cno = data.cno
         star_age = data.star_age
-        radius = data.radius
-        print(lh)
+
 
         """
         for i in range(1, file_count):
@@ -239,13 +240,14 @@ class ZAMS_TAMS():
         ax = fig.add_subplot(211)
         ax.set_xscale('log')
         ax.set_yscale('log')
-        ax.scatter(star_age, 10**lh, c='k', s=10)
-        #ax.plot(star_age[indices], power_nuc[indices], '--r', c='r')
-        ax.set_ylabel('Power')
+        ax.scatter(star_age, central_H1, c='k', s=10)
+        ax.set_ylabel('Central H1 Abundance')
         ax.set_xlabel('Stellar Age (Years)')
 
 
-        #ax2 = fig.add_subplot(212)
-        ax.plot(star_age, radius)
-        #ax2.set_xscale('log')
-        #ax2.set_yscale('log')
+        ax2 = fig.add_subplot(212)
+        ax2.set_xscale('log')
+        ax2.set_yscale('log')
+        ax2.plot(star_age, pp, label = 'PP Chain')
+        ax2.plot(star_age, cno, label = 'CNO Cycle')
+        ax2.legend()
