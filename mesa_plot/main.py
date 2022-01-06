@@ -223,15 +223,17 @@ class ZAMS_TAMS():
                 break
         """
 
+        indices  = np.argwhere(power_nuc > 1e-3)
+
         fig = plt.figure()
         axh = fig.add_subplot(211)
         axt = fig.add_subplot(212)
-        axh.set_xscale('symlog')
-        axh.set_yscale('symlog')
-        axt.set_xscale('symlog')
-        axt.set_yscale('symlog')
-        axh.scatter(star_age, h_power, c='k')
-        axt.scatter(star_age, power_nuc, c='r')
+        axh.set_xscale('log')
+        axh.set_yscale('log')
+        axt.set_xscale('log')
+        axt.set_yscale('log')
+        axh.scatter(star_age[indices], h_power[indices], c='k')
+        axt.scatter(star_age[indices], power_nuc[indices], c='r')
         axh.set_ylabel('Power')
         axt.set_xlabel('Stellar Age (Years)')
         axt.set_ylabel('Power')
