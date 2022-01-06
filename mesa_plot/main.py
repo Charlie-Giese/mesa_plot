@@ -64,7 +64,7 @@ class history_plot():
         LH = history_data.log_LHe
         LHe = history_data.log_LHe
         LZ = history_data.log_LHe
-
+        print(LH, LHe, LZ)
         pp = history_data.pp
         cno = history_data.cno
         tri_alfa = history_data.tri_alfa
