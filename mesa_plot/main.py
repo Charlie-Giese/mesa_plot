@@ -230,10 +230,10 @@ class ZAMS_TAMS():
 
         print(h_power)
         plt.scatter(star_age, h_power, c='k')
-        plt.plot(star_age, power, c='r')
+        plt.plot(star_age, power_nuc, c='r')
         plt.xscale('log')
         plt.yscale('log')
         plt.xlabel('Stellar Age (Years)')
         plt.ylabel('Power from Hydrogen Burning')
-        plt.axvline(star_age[indices[0]])
-        plt.axvline(star_age[indices[1]])
+        #plt.axvline(star_age[indices[0]])
+        #plt.axvline(star_age[indices[1]])
