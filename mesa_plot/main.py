@@ -204,22 +204,33 @@ class ZAMS_TAMS():
             dx = np.diff(lst)
             return np.sum(dx[1:] * dx[:-1] < 0)
 
-        power = np.zeros(shape=(file_count))
-
+        h_power = np.zeros(shape=(file_count))
+        star_age = np.zeros_like(h_power)
 
         for i in range(1, file_count):
             profile = profile_plot(mesa_profile=i)
             meta_data = profile.load_metadata()
-            H_power = meta_data['power_h_burn'].values
-            power[i-1] = H_power
-        points = []
+            h_power[i-1] = meta_data['power_h_burn'].values
+            star_age[i-1] = meta_data['star_age'].values
+
+
+        indices = np.array([0,0])
         for p in range(0, file_count-1):
-            if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) > 0:
+            if np.abs(h_power[p] - h_power[p+1]) > h_power[p+1]/10 and (h_power[p+1] - h_power[p]) > 0:
                 print('ZAMS is profile %i' %p)
-                print(p)
-                points[0] = power[p]
+                indices[0] = p
+                break
         for p in range(0, file_count-1):
-            if np.abs(power[p] - power[p+1]) > power[p+1]/10 and (power[p+1] - power[p]) < 0:
+            if np.abs(h_power[p] - h_power[p+1]) > h_power[p+1]/10 and (h_power[p+1] - h_power[p]) < 0:
                 print('TAMS is profile %i' %p)
-                points[1] = power[p]
-        return points
+                indices[1] = p
+                break
+
+        plt.scatter(star_age, h_power, c='k')
+        plt.xscale('log')
+        plt.yscale('log')
+        plt.xlabel('Stellar Age (Years)')
+        plt.ylabel('')
+        plt.xlim(1e8, 1e12)
+        plt.axvline(star_age[indices[0]])
+        plt.axvline(star_age[indices[1]])
