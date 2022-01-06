@@ -229,7 +229,7 @@ class ZAMS_TAMS():
                 break
 
         plt.scatter(star_age, h_power, c='k')
-        plt.scatter(star_age, power_nuc, c='r')
+        #plt.scatter(star_age, power_nuc, c='r')
         plt.xscale('log')
         plt.yscale('log')
         plt.xlabel('Stellar Age (Years)')
