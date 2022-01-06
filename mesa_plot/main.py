@@ -241,3 +241,5 @@ class ZAMS_TAMS():
 
         ax2 = fig.add_subplot(212)
         ax2.plot(age, r)
+        ax2.set_xscale('log')
+        ax2.set_yscale('log')
