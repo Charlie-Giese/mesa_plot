@@ -200,7 +200,7 @@ class profile_plot():
         axs[1].plot(radius, logL, label = 'Log(L)', c='k')
         axs[1].plot(radius, logRho, label = 'Log(\rho)', c='r')
 
-    def energy_transport():
+    def energy_transport(self):
 
         df = self.load_profile()
 
