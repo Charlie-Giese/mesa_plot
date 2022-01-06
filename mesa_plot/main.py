@@ -202,6 +202,12 @@ class ZAMS_TAMS():
         power_nuc = np.zeros_like(h_power)
         star_age = np.zeros_like(h_power)
 
+        h = history_plot()
+        data = history_plot.load_history()
+        r = data.radius #rsun
+
+
+
         for i in range(1, file_count):
             profile = profile_plot(mesa_profile=i)
             meta_data = profile.load_metadata()
@@ -225,10 +231,14 @@ class ZAMS_TAMS():
         indices  = np.argwhere(power_nuc > 1e-3)
 
         fig = plt.figure()
-        ax = fig.add_subplot(111)
+        ax = fig.add_subplot(211)
         ax.set_xscale('log')
         ax.set_yscale('log')
         ax.scatter(star_age[indices], h_power[indices], c='k')
         ax.plot(star_age[indices], power_nuc[indices], '--r', c='r')
         ax.set_ylabel('Power')
         ax.set_xlabel('Stellar Age (Years)')
+
+        ax2 = fig.add_subplot(212)
+        ax2.plot(star_age, radius)
+        
