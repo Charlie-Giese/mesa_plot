@@ -198,10 +198,6 @@ class ZAMS_TAMS():
         path, dirs, files = next(os.walk(self.mesa_log_dir))
         file_count = len(files) -3
 
-        def turningpoints(lst):
-            dx = np.diff(lst)
-            return np.sum(dx[1:] * dx[:-1] < 0)
-
         h_power = np.zeros(shape=(file_count))
         power_nuc = np.zeros_like(h_power)
         star_age = np.zeros_like(h_power)
@@ -229,6 +225,7 @@ class ZAMS_TAMS():
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
+        print(star_age, h_power, power_nuc)
         ax.scatter(star_age, h_power, c='k', s=100, marker = '.')
         ax.scatter(star_age, power_nuc, c='r', s=2, marker = 'o')
         ax.set_xscale('log')
