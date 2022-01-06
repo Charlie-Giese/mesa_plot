@@ -226,6 +226,7 @@ class ZAMS_TAMS():
                 indices[1] = p
                 break
 
+        print(h_power)
         plt.scatter(star_age, h_power, c='k')
         plt.xscale('log')
         plt.yscale('log')
