@@ -198,14 +198,14 @@ class ZAMS_TAMS():
         path, dirs, files = next(os.walk(self.mesa_log_dir))
         file_count = len(files) -3
 
-        h_power = np.zeros(shape=(file_count))
-        power_nuc = np.zeros_like(h_power)
-        star_age = np.zeros_like(h_power)
-        r = np.zeros_like(h_power)
+        #h_power = np.zeros(shape=(file_count))
+        #power_nuc = np.zeros_like(h_power)
+        #star_age = np.zeros_like(h_power)
+        #r = np.zeros_like(h_power)
 
         h = history_plot()
         data = h.load_history()
-        h_power = data.log_LH
+        lh = data.log_LH
         star_age = data.star_age
         radius = data.radius
 
@@ -232,13 +232,13 @@ class ZAMS_TAMS():
                 indices[1] = p
                 break
         """
-        indices  = np.argwhere(power_nuc > 1e-8)
+
 
         fig = plt.figure()
         ax = fig.add_subplot(211)
         ax.set_xscale('log')
         ax.set_yscale('log')
-        ax.scatter(star_age, h_power, c='k')
+        ax.scatter(star_age, lh, c='k')
         #ax.plot(star_age[indices], power_nuc[indices], '--r', c='r')
         ax.set_ylabel('Power')
         ax.set_xlabel('Stellar Age (Years)')
