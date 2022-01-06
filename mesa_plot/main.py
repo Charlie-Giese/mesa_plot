@@ -255,6 +255,18 @@ class profile_plot():
         plt.xlabel('Mass (m/M)')
         plt.ylabel('l')
 
+    def mass_loss(self):
+
+        df = self.load_profile()
+        mass_loss = df['star_mdot'].values
+        star_age = df['star_age'].values
+
+        plt.plot(star_age, mass_loss, c='k')
+        plt.xlabel('Stellar Age (Years)')
+        plt.ylabel('Mass Loss')
+        plt.xscale('log')
+        plt.yscale('log')
+
 class ZAMS_TAMS():
 
     def __init__(self, mesa_log_dir = os.getcwd()+'/LOGS'):
