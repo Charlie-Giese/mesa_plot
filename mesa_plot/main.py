@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import mesa_reader as mr
 import os
 import pandas as pd
+import astropy.constant as c
 
 plt.rcParams['axes.titlesize'] = 16
 plt.rcParams['xtick.labelsize'] = 12
@@ -199,7 +200,21 @@ class profile_plot():
         axs[1].plot(radius, logL, label = 'Log(L)', c='k')
         axs[1].plot(radius, logRho, label = 'Log(\rho)', c='r')
 
+    def energy_transport():
 
+        df = self.load_profile()
+
+        mass = df['mass']
+        conv_vel = df['conv_vel']
+        opacity = df['opacity']
+        pressure = 10**df['logP']
+        temp = 10**df['logT']
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(mass, conv_vel)
+        ax.set_xscale('Mass (m/M)')
+        
     def P_rho(self):
         df = self.load_profile()
 
