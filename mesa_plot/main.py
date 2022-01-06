@@ -208,10 +208,11 @@ class ZAMS_TAMS():
         for i in range(1, file_count):
             profile = profile_plot(mesa_profile=i)
             meta_data = profile.load_metadata()
+            data = profile.load_profile()
             h_power[i-1] = meta_data['power_h_burn'].values
             star_age[i-1] = meta_data['star_age'].values
             power_nuc[i-1] = meta_data['power_nuc_burn'].values
-            r[i-1] = meta_data['radius'].values
+            r[i-1] = (data['radius'].values)[0]
 
         """
         indices = np.array([0,0])
