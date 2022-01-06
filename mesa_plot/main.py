@@ -227,9 +227,11 @@ class ZAMS_TAMS():
                 break
         """
 
-        plt.scatter(star_age, h_power, c='k', s=100, marker = '.')
-        plt.scatter(star_age, power_nuc, c='r', s=2, marker = 'o')
-        plt.xscale('log')
-        plt.yscale('log')
-        plt.xlabel('Stellar Age (Years)')
-        plt.ylabel('Power')
+        fig = plt.figure()
+        ax = fig.add_subfigure(111)
+        ax.scatter(star_age, h_power, c='k', s=100, marker = '.')
+        ax.scatter(star_age, power_nuc, c='r', s=2, marker = 'o')
+        ax.set_xscale('log')
+        ax.set_yscale('log')
+        ax.set_xlabel('Stellar Age (Years)')
+        ax.set_ylabel('Power')
