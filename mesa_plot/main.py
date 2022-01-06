@@ -215,7 +215,7 @@ class ZAMS_TAMS():
             star_age[i-1] = meta_data['star_age'].values
             power_nuc[i-1] = meta_data['power_nuc_burn'].values
 
-
+        """
         indices = np.array([0,0])
         for p in range(0, file_count-1):
             if np.abs(h_power[p] - h_power[p+1]) > h_power[p+1]/10 and (h_power[p+1] - h_power[p]) > 0:
@@ -227,9 +227,9 @@ class ZAMS_TAMS():
                 print('TAMS is profile %i' %p)
                 indices[1] = p
                 break
-
+        """
         plt.scatter(star_age, h_power, c='k')
-        #plt.scatter(star_age, power_nuc, c='r')
+        plt.scatter(star_age, power_nuc, c='r')
         plt.xscale('log')
         plt.yscale('log')
         plt.xlabel('Stellar Age (Years)')
