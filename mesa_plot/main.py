@@ -135,6 +135,7 @@ class history_plot():
         axs.plot(star_age, surface_c12, label = 'C12, Surface')
         axs.plot(star_age, surface_n14, label = 'N14, Surface')
         axs.plot(star_age, surface_o16, label = 'O16, Surface')
+        axs.let_ylim(1e-5,1)
 
 
         axc.legend()
