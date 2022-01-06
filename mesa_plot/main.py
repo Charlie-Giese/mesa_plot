@@ -208,6 +208,7 @@ class ZAMS_TAMS():
         lh = data.log_LH
         star_age = data.star_age
         radius = data.radius
+        print(lh)
 
         """
         for i in range(1, file_count):
@@ -236,8 +237,8 @@ class ZAMS_TAMS():
 
         fig = plt.figure()
         ax = fig.add_subplot(211)
-        ax.set_xscale('log')
-        ax.set_yscale('log')
+        #ax.set_xscale('log')
+        #ax.set_yscale('log')
         ax.scatter(star_age, lh, c='k')
         #ax.plot(star_age[indices], power_nuc[indices], '--r', c='r')
         ax.set_ylabel('Power')
