@@ -191,7 +191,7 @@ class ZAMS_TAMS():
     def __init__(self, mesa_log_dir = os.getcwd()+'/LOGS'):
         self.mesa_log_dir = mesa_log_dir
 
-    def plot(self):
+    def calc_points(self):
 
         import os
 
@@ -227,8 +227,8 @@ class ZAMS_TAMS():
                 break
         """
 
-        plt.scatter(star_age, h_power)
-        plt.scatter(star_age, power_nuc)
+        plt.scatter(star_age, h_power, c='k', s=100, marker = '.')
+        plt.scatter(star_age, power_nuc, c='r', s=2, marker = 'o')
         plt.xscale('log')
         plt.yscale('log')
         plt.xlabel('Stellar Age (Years)')
