@@ -198,10 +198,10 @@ class ZAMS_TAMS():
         path, dirs, files = next(os.walk(self.mesa_log_dir))
         file_count = len(files) -3
 
-        h_power = np.zeros(shape=(file_count))
-        power_nuc = np.zeros_like(h_power)
-        star_age = np.zeros_like(h_power)
-        r = np.zeros_like(h_power)
+        #h_power = np.zeros(shape=(file_count))
+        #power_nuc = np.zeros_like(h_power)
+        #star_age = np.zeros_like(h_power)
+        #r = np.zeros_like(h_power)
 
         h = history_plot()
         data = h.load_history()
@@ -209,9 +209,10 @@ class ZAMS_TAMS():
         pp = data.pp
         cno = data.cno
         star_age = data.star_age
+        model_number  = data.model_number
 
 
-
+        """
         for i in range(1, file_count):
             profile = profile_plot(mesa_profile=i)
             meta_data = profile.load_metadata()
@@ -233,14 +234,14 @@ class ZAMS_TAMS():
                 print('TAMS is profile %i' %p)
                 indices[1] = p
                 break
+        """
 
-        print(indices)
 
         fig = plt.figure()
         ax = fig.add_subplot(211)
         ax.set_xscale('log')
         ax.set_yscale('log')
-        ax.scatter(star_age, central_H1, c='k', s=10)
+        ax.scatter(model_number, central_H1, c='k', s=10)
         ax.set_ylabel('Central H1 Abundance')
         ax.set_xlabel('Stellar Age (Years)')
 
@@ -248,6 +249,6 @@ class ZAMS_TAMS():
         ax2 = fig.add_subplot(212)
         ax2.set_xscale('log')
         ax2.set_yscale('log')
-        ax2.plot(star_age, pp, label = 'PP Chain')
-        ax2.plot(star_age, cno, label = 'CNO Cycle')
+        ax2.plot(model_number, pp, label = 'PP Chain')
+        ax2.plot(model_number, cno, label = 'CNO Cycle')
         ax2.legend()
