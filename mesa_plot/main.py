@@ -204,10 +204,10 @@ class ZAMS_TAMS():
         r = np.zeros_like(h_power)
 
         h = history_plot()
-        history = history.load_history(self)
-        h_power = history.log_LH
-        star_age = history.star_age
-        radius = history.radius
+        data = h.load_history(self)
+        h_power = data.log_LH
+        star_age = data.star_age
+        radius = data.radius
 
         """
         for i in range(1, file_count):
