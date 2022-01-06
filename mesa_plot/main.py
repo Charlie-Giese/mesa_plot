@@ -199,7 +199,7 @@ class ZAMS_TAMS():
 
         path, dirs, files = next(os.walk(self.mesa_log_dir))
         file_count = len(files) -3
-        print(file_count)
+
         def turningpoints(lst):
             dx = np.diff(lst)
             return np.sum(dx[1:] * dx[:-1] < 0)
@@ -228,8 +228,11 @@ class ZAMS_TAMS():
                 indices[1] = p
                 break
         """
-        plt.scatter(star_age, h_power, c='k')
-        plt.scatter(star_age, power_nuc, c='r')
+        print(star_age)
+        print(h_power)
+        print(power_nuc)
+        plt.scatter(star_age, h_power)
+        plt.scatter(star_age, power_nuc)
         plt.xscale('log')
         plt.yscale('log')
         plt.xlabel('Stellar Age (Years)')
