@@ -75,7 +75,7 @@ class history_plot():
 
         for ax in axs:
             #   ax.set_xscale('log')
-            ax.set_yscale('log')
+            #ax.set_yscale('log')
 
         axs[0].plot(age, LH, label = 'H Luminosity', c='k')
         axs[0].plot(age, LHe, label = 'He Luminosity', c='r')
