@@ -77,12 +77,12 @@ class history_plot():
             ax.set_xscale('log')
             #ax.set_yscale('log')
 
-        axs[0].plot(age, LH, label = 'H Luminosity', c='k')
-        axs[0].plot(age, LHe, label = 'He Luminosity', c='r')
+        axs[0].plot(age, 10**LH, label = 'H Luminosity', c='k')
+        axs[0].plot(age, 10**LHe, label = 'He Luminosity', c='r')
 
         axs[0].legend()
         axs[0].set_title('Energy Production')
-        axs[0].set_ylabel('$Log(L/L_{\odot})$')
+        axs[0].set_ylabel('$L/L_{\odot}$')
 
 
         axs[1].plot(age, 10**pp, label = 'PP Cycle', c='k')
