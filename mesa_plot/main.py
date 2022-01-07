@@ -80,7 +80,7 @@ class history_plot():
         axs[0].plot(age, 10**LH, label = 'H Luminosity', c='k')
         axs[0].plot(age, 10**LHe, label = 'He Luminosity', c='r')
 
-        axs[0].legend()
+        axs[0].legend(fontsize=14)
         axs[0].set_title('Energy Production')
         axs[0].set_ylabel('$L/L_{\odot}$')
 
@@ -88,7 +88,7 @@ class history_plot():
         axs[1].plot(age, 10**pp, label = 'PP Cycle', c='k')
         axs[1].plot(age, 10**cno, label = 'CNO Cycle', c='r')
         axs[1].plot(age, 10**tri_alfa, label = 'Triple Alpha', c='b')
-        axs[1].legend()
+        axs[1].legend(fontsize=14)
         axs[1].set_ylabel('$erg/s/g$')
         axs[1].set_xlabel('Stellar Age (Years)')
     def abundances(self):
@@ -137,8 +137,8 @@ class history_plot():
         axs.set_ylim(1e-5,1)
 
 
-        axc.legend()
-        axs.legend()
+        axc.legend(fontsize = 14)
+        axs.legend(fontsize = 14)
 
 
 class profile_plot():
@@ -181,7 +181,7 @@ class profile_plot():
             #if np.min(frac) >= -100:
             plt.plot(mass, frac, label = labels[i])
             plt.ylim(-5,0)
-            plt.legend()
+            plt.legend(fontsize = 14)
             i+=1
 
     def rho_T_profile(self):
@@ -189,16 +189,13 @@ class profile_plot():
         df = self.load_profile()
         logT = df['logT']
         logRho = df['logRho']
-        logL = df['logL']
-        opacity = df['opacity']
-        radius = df['radius']
 
-        fig, axs = plt.subplots(2,1)
-        axs[0].plot(radius, logT, label = 'Log(T)', c='r')
-        axs[0].plot(radius, opacity, label = 'Opacity', c='k')
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(logRho, logT, c='k')
+        ax.set_xlabel(' log(Density)')
+        ax.set_ylabel('$log(T)$')
 
-        axs[1].plot(radius, logL, label = 'Log(L)', c='k')
-        axs[1].plot(radius, logRho, label = 'Log(\rho)', c='r')
 
     def energy_transport(self):
 
