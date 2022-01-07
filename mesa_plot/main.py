@@ -12,10 +12,10 @@ import astropy.constants as c
 plt.rcParams['axes.titlesize'] = 16
 plt.rcParams['xtick.labelsize'] = 12
 plt.rcParams['ytick.labelsize'] = 12
-plt.rcParams['axes.labelsize'] = 12
+plt.rcParams['axes.labelsize'] = 14
 plt.rcParams['font.size'] = 10
 plt.rcParams['figure.titlesize'] = 18
-plt.rcParams['axes.labelsize'] = 12
+
 
 class history_plot():
     """Class for plotting outputs from MESA 1-D stellar evolution code"""
