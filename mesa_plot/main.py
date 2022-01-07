@@ -81,15 +81,15 @@ class history_plot():
         axs[0].plot(age, LHe, label = 'He Luminosity', c='r')
 
         axs[0].legend()
-        axs[0].set_title('Energy Production$')
+        axs[0].set_title('Energy Production')
         axs[0].set_ylabel('$Log(L/L_{\odot})$')
 
 
-        axs[1].plot(age, pp, label = 'PP Cycle', c='k')
-        axs[1].plot(age, cno, label = 'CNO Cycle', c='r')
-        axs[1].plot(age, tri_alfa, label = 'Triple Alpha', c='b')
+        axs[1].plot(age, 10**pp, label = 'PP Cycle', c='k')
+        axs[1].plot(age, 10**cno, label = 'CNO Cycle', c='r')
+        axs[1].plot(age, 10**tri_alfa, label = 'Triple Alpha', c='b')
         axs[1].legend()
-        axs[1].set_ylabel('$Log(L/L_{\odot})$')
+        axs[1].set_ylabel('$erg/s/g$')
         axs[1].set_xlabel('Stellar Age (Years)')
 
     def abundances(self):
