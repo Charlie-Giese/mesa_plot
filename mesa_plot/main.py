@@ -81,7 +81,6 @@ class history_plot():
         axs[0].plot(age, 10**LHe, label = 'He Luminosity', c='r')
 
         axs[0].legend(fontsize=14)
-        axs[0].set_title('Energy Production')
         axs[0].set_ylabel('$L/L_{\odot}$')
 
 
