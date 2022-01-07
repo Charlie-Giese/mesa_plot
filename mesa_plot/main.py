@@ -91,7 +91,7 @@ class history_plot():
         axs[1].legend()
         axs[1].set_ylabel('$erg/s/g$')
         axs[1].set_xlabel('Stellar Age (Years)')
-
+        axs[1].set_yscale('log')
     def abundances(self):
 
         h = self.load_history()
