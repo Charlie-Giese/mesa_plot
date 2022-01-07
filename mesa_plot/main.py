@@ -15,7 +15,7 @@ plt.rcParams['ytick.labelsize'] = 12
 plt.rcParams['axes.labelsize'] = 14
 plt.rcParams['font.size'] = 10
 plt.rcParams['figure.titlesize'] = 18
-plt.rcParams['figure.figsize'] = [7.2,4.45]
+plt.rcParams['figure.figsize'] = [7.5,5.5]
 
 class history_plot():
     """Class for plotting outputs from MESA 1-D stellar evolution code"""
