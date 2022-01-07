@@ -12,7 +12,7 @@ import astropy.constants as c
 plt.rcParams['axes.titlesize'] = 16
 plt.rcParams['xtick.labelsize'] = 12
 plt.rcParams['ytick.labelsize'] = 12
-plt.rcParams['axes.labelsize'] = 14
+plt.rcParams['axes.labelsize'] = 13
 plt.rcParams['font.size'] = 10
 plt.rcParams['figure.titlesize'] = 18
 plt.rcParams['figure.figsize'] = [7.5,5.5]
