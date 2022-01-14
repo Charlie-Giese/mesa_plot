@@ -200,16 +200,27 @@ class profile_plot():
 
         df = self.load_profile()
 
-        mass = df['mass']
-        conv_vel = df['conv_vel']
-        opacity = df['opacity']
-        pressure = 10**df['logP']
-        temp = 10**df['logT']
+        from astropy import constants as const
+        import astropy.units as u
 
-        fig = plt.figure()
-        ax = fig.add_subplot(111)
-        ax.plot(mass, conv_vel)
-        ax.set_xlabel('Mass (m/M)')
+        m = df['mass'] * const.M_sun.cgs
+        conv_vel = df['conv_vel']
+        k = df['opacity']
+        P = 10**df['logP']
+        T = 10**df['logT']
+        l = 10**df['logL'] * const.L_sun.cgs
+        import math
+
+        def radiative_tempgrad(k, P, T, l, m):
+            rad_const = (8*(math.pi)**5 * (const.k_B.cgs)**4)/(15 * (const.c.cgs)**3 * (const.h.cgs)**3)
+            cons = 3/(const.c.cgs * const.G.cgs * 16 * math.pi * rad_const)
+            rad_grad = cons * (k*l*P)/(m* T**4)
+            return rad_grad
+
+
+        plt.plot(m/const.M_sun.cgs, radiative_tempgrad(k,P,T,l,m))
+        plt.plot(m/const.M_sun.cgs, np.ones_like(m)*0.4)
+        plt.ylim(0,2)
 
     def P_rho(self):
         df = self.load_profile()
