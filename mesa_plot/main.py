@@ -12,8 +12,8 @@ import astropy.constants as c
 plt.rcParams['axes.titlesize'] = 16
 plt.rcParams['xtick.labelsize'] = 12
 plt.rcParams['ytick.labelsize'] = 12
-plt.rcParams['axes.labelsize'] = 13
-plt.rcParams['font.size'] = 10
+plt.rcParams['axes.labelsize'] = 14
+plt.rcParams['font.size'] = 12
 plt.rcParams['figure.titlesize'] = 18
 plt.rcParams['figure.figsize'] = [7.5,5.5]
 
@@ -38,11 +38,12 @@ class history_plot():
         L = history_data.log_L
         T_eff = history_data.log_Teff
 
-        plt.plot(T_eff, L, c = 'k')
+        plt.plot(T_eff, L, c = 'k', label = (r'$%.1f M_{\odot}$' %star_mass))
         plt.xlim(plt.xlim()[::-1])
-        plt.xlabel('log(T) (K)')
-        plt.ylabel('log(L) (L/L_solar)')
-        plt.title(' %s Solar Mass HR Diagram' % star_mass)
+        plt.xlabel(r'$log(T) (K)$')
+        plt.ylabel(r'$log(L/L_{\odot})$')
+        plt.legend(fontsize = 14)
+
 
     def plot_T_rho(self):
         """This function creates an evolutionary track in the density-temperature plane"""
@@ -218,8 +219,11 @@ class profile_plot():
             return rad_grad
 
 
-        plt.plot(m/const.M_sun.cgs, radiative_tempgrad(k,P,T,l,m))
-        plt.plot(m/const.M_sun.cgs, np.ones_like(m)*0.4)
+        plt.plot(m/const.M_sun.cgs, radiative_tempgrad(k,P,T,l,m), label = r'$\nabla_{rad}$', c='k')
+        plt.plot(m/const.M_sun.cgs, np.ones_like(m)*0.4, label = r'$\nabla_{ad}$', c='r')
+        plt.xlabel(r'$m/M_{\odot}$')
+        plt.ylabel(r'$\nabla$')
+        plt.legend(fontsize=14)
         plt.ylim(0,2)
 
     def P_rho(self):
