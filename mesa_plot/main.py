@@ -12,8 +12,8 @@ import astropy.constants as c
 plt.rcParams['axes.titlesize'] = 16
 plt.rcParams['xtick.labelsize'] = 12
 plt.rcParams['ytick.labelsize'] = 12
-plt.rcParams['axes.labelsize'] = 14
-plt.rcParams['font.size'] = 12
+plt.rcParams['axes.labelsize'] = 16
+plt.rcParams['font.size'] = 14
 plt.rcParams['figure.titlesize'] = 18
 plt.rcParams['figure.figsize'] = [7.5,5.5]
 
@@ -65,6 +65,7 @@ class history_plot():
 
         LH = history_data.log_LH
         LHe = history_data.log_LHe
+        Lgrav = history_data.log_abs_Lgrav
 
         pp = history_data.pp
         cno = history_data.cno
@@ -78,8 +79,10 @@ class history_plot():
             ax.set_xscale('log')
             ax.set_yscale('log')
 
-        axs[0].plot(age, 10**LH, label = 'H Luminosity', c='k')
-        axs[0].plot(age, 10**LHe, label = 'He Luminosity', c='r')
+        axs[0].plot(age, 10**LH, label = r'$log(L_H/L_{\odot})$', c='k')
+        axs[0].plot(age, 10**LHe, label = r'$log(L_{He}/L_{\odot})$', c='r')
+        axs[0].plot(age, 10**Lgrav, label = r'$log(L_{grav}/L_{\odot})$', c='b')
+
 
         axs[0].legend(fontsize=14)
         axs[0].set_ylabel('$L/L_{\odot}$')
@@ -111,14 +114,14 @@ class history_plot():
         star_age = h.star_age
 
         fig = plt.figure()
-        axc = fig.add_subplot(121)
-        axs = fig.add_subplot(122)
+        axc = fig.add_subplot(111)
+        #axs = fig.add_subplot(122)
         axc.set_xscale('log')
-        axs.set_xscale('log')
+        #axs.set_xscale('log')
         axc.set_yscale('log')
-        axs.set_yscale('log')
+        #axs.set_yscale('log')
         axc.set_xlabel('Stellar Age (Years)')
-        axs.set_xlabel('Stellar Age (Years)')
+        #axs.set_xlabel('Stellar Age (Years)')
         axc.set_ylabel('Abundance')
 
         axc.plot(star_age, center_h1, label = 'H1, Centre')
@@ -129,16 +132,16 @@ class history_plot():
         axc.plot(star_age, center_fe56, label = 'Fe56, Centre')
         axc.set_ylim(1e-5, 1)
 
-        axs.plot(star_age, surface_h1, label = 'H1, Surface')
-        axs.plot(star_age, surface_he4, label = 'He4, Surface')
-        axs.plot(star_age, surface_c12, label = 'C12, Surface')
-        axs.plot(star_age, surface_n14, label = 'N14, Surface')
-        axs.plot(star_age, surface_o16, label = 'O16, Surface')
-        axs.set_ylim(1e-5,1)
+        #axs.plot(star_age, surface_h1, label = 'H1, Surface')
+        #axs.plot(star_age, surface_he4, label = 'He4, Surface')
+        #axs.plot(star_age, surface_c12, label = 'C12, Surface')
+        #axs.plot(star_age, surface_n14, label = 'N14, Surface')
+        #axs.plot(star_age, surface_o16, label = 'O16, Surface')
+        #axs.set_ylim(1e-5,1)
 
 
         axc.legend(fontsize = 14)
-        axs.legend(fontsize = 14)
+        #axs.legend(fontsize = 14)
 
 
 class profile_plot():
@@ -210,6 +213,7 @@ class profile_plot():
         P = 10**df['logP']
         T = 10**df['logT']
         l = 10**df['logL'] * const.L_sun.cgs
+        r = df['radius']
         import math
 
         def radiative_tempgrad(k, P, T, l, m):
@@ -219,9 +223,11 @@ class profile_plot():
             return rad_grad
 
 
-        plt.plot(m/const.M_sun.cgs, radiative_tempgrad(k,P,T,l,m), label = r'$\nabla_{rad}$', c='k')
-        plt.plot(m/const.M_sun.cgs, np.ones_like(m)*0.4, label = r'$\nabla_{ad}$', c='r')
-        plt.xlabel(r'$m/M_{\odot}$')
+        #plt.plot(m/const.M_sun.cgs, radiative_tempgrad(k,P,T,l,m), label = r'$\nabla_{rad}$', c='k')
+        #plt.plot(m/const.M_sun.cgs, np.ones_like(m)*0.4, label = r'$\nabla_{ad}$', c='r')
+        plt.plot(r, radiative_tempgrad(k,P,T,l,m), label = r'$\nabla_{rad}$', c='k')
+        plt.plot(r, np.ones_like(r)*0.4, label = r'$\nabla_{ad}$', c='r')
+        plt.xlabel(r'$r/R_{\odot}$')
         plt.ylabel(r'$\nabla$')
         plt.legend(fontsize=14)
         plt.ylim(0,2)
