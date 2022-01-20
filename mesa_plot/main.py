@@ -76,13 +76,15 @@ class history_plot():
         fig, axs = plt.subplots(2,1)
 
         for ax in axs:
-            ax.set_xscale('log')
+            #ax.set_xscale('log')
             ax.set_yscale('log')
 
         axs[0].plot(age, 10**LH, label = r'$log(L_H/L_{\odot})$', c='k')
         axs[0].plot(age, 10**LHe, label = r'$log(L_{He}/L_{\odot})$', c='r')
         axs[0].plot(age, 10**Lgrav, label = r'$log(L_{grav}/L_{\odot})$', c='b')
-
+        #axs[0].set_ylim(1e-20, 1e3)
+        #axs[0].set_ylim(1e-20, 1e3)
+        axs[0].set_xlim(1e0, np.max(history_data.star_age))
 
         axs[0].legend(fontsize=14)
         axs[0].set_ylabel('$L/L_{\odot}$')
@@ -94,6 +96,9 @@ class history_plot():
         axs[1].legend(fontsize=14)
         axs[1].set_ylabel('$erg/s/g$')
         axs[1].set_xlabel('Stellar Age (Years)')
+        #axs[1].set_ylim(1e-20, 1e3)
+        axs[1].set_xlim(1e0, np.max(history_data.star_age))
+
     def abundances(self):
 
         h = self.load_history()
@@ -114,34 +119,46 @@ class history_plot():
         star_age = h.star_age
 
         fig = plt.figure()
-        axc = fig.add_subplot(111)
-        #axs = fig.add_subplot(122)
-        axc.set_xscale('log')
-        #axs.set_xscale('log')
-        axc.set_yscale('log')
-        #axs.set_yscale('log')
-        axc.set_xlabel('Stellar Age (Years)')
-        #axs.set_xlabel('Stellar Age (Years)')
+        #axc = fig.add_subplot(111)
+        axs = fig.add_subplot(111)
+        #axc.set_xscale('log')
+        axs.set_xscale('log')
+        #axc.set_yscale('log')
+        axs.set_yscale('log')
+        #axc.set_xlabel('Stellar Age (Years)')
+        axs.set_xlabel('Stellar Age (Years)')
         axc.set_ylabel('Abundance')
 
-        axc.plot(star_age, center_h1, label = 'H1, Centre')
-        axc.plot(star_age, center_he4, label = 'He4, Centre')
-        axc.plot(star_age, center_c12, label = 'C12, Centre')
-        axc.plot(star_age, center_n14, label = 'N14, Centre')
-        axc.plot(star_age, center_o16, label = 'O16, Centre')
-        axc.plot(star_age, center_fe56, label = 'Fe56, Centre')
-        axc.set_ylim(1e-5, 1)
+        #axc.plot(star_age, center_h1, label = 'H1, Centre')
+        #axc.plot(star_age, center_he4, label = 'He4, Centre')
+        #axc.plot(star_age, center_c12, label = 'C12, Centre')
+        #axc.plot(star_age, center_n14, label = 'N14, Centre')
+        #axc.plot(star_age, center_o16, label = 'O16, Centre')
+        #axc.plot(star_age, center_fe56, label = 'Fe56, Centre')
+        #axc.set_ylim(1e-5, 1)
 
-        #axs.plot(star_age, surface_h1, label = 'H1, Surface')
-        #axs.plot(star_age, surface_he4, label = 'He4, Surface')
-        #axs.plot(star_age, surface_c12, label = 'C12, Surface')
-        #axs.plot(star_age, surface_n14, label = 'N14, Surface')
-        #axs.plot(star_age, surface_o16, label = 'O16, Surface')
-        #axs.set_ylim(1e-5,1)
+        axs.plot(star_age, surface_h1, label = 'H1, Surface')
+        axs.plot(star_age, surface_he4, label = 'He4, Surface')
+        axs.plot(star_age, surface_c12, label = 'C12, Surface')
+        axs.plot(star_age, surface_n14, label = 'N14, Surface')
+        xs.plot(star_age, surface_o16, label = 'O16, Surface')
+        axs.set_ylim(1e-5,1)
 
 
         axc.legend(fontsize = 14)
         #axs.legend(fontsize = 14)
+
+    def zams_tams(self):
+
+        h = self.load_history()
+        model = h.model_number
+        h1 = h.center_h1
+        he4 = h.center_he4
+
+        plt.plot(model, h1, label = 'H1', c = 'b', lw = 10)
+        plt.plot(model, he4, label = 'He4', c = 'g', lw = 10)
+        plt.xlabel('Model Number')
+        plt.ylabel('Core Mass Fraction')
 
 
 class profile_plot():
@@ -169,22 +186,28 @@ class profile_plot():
         """Plot profile of mass fraction inside star"""
 
         df = self.load_profile()
-        mass = df['mass']
-        h1 = np.log(df['h1'])
-        he3 = np.log(df['he3'])
-        he4 = np.log(df['he4'])
-        c12 = np.log(df['he4'])
-        n14 = np.log(df['he4'])
-        o16 = np.log(df['he4'])
+        dm = self.load_metadata()
+        mass = df['mass'].values
+        radius = df['radius'].values
+        h1 = df['h1']
+        he3 = df['he3']
+        he4 = df['he4']
+        c12 = df['he4']
+        n14 = df['he4']
+        o16 =   df['he4']
 
 
         labels = ['h1', 'he3', 'he4', 'c12', 'n14', 'o16']
         i=0
         for frac in [h1, he3, he4, c12, n14, o16]:
             #if np.min(frac) >= -100:
-            plt.plot(mass, frac, label = labels[i])
-            plt.ylim(-5,0)
+            plt.plot(radius, frac, label = labels[i])
+            #plt.ylim(-5,0)
             plt.legend(fontsize = 14)
+            plt.xscale('log')
+            plt.yscale('log')
+            plt.xlabel(r'$Radius$ $(R_{\odot})$', fontsize = 16)
+            plt.ylabel(r'$Mass Fraction$', fontsize = 16)
             i+=1
 
     def rho_T_profile(self):
