@@ -72,6 +72,7 @@ class history_plot():
         tri_alfa = history_data.tri_alfa
 
         age = history_data.star_age
+        model = history_data.model_number
 
         fig, axs = plt.subplots(2,1)
 
@@ -79,25 +80,30 @@ class history_plot():
             #ax.set_xscale('log')
             ax.set_yscale('log')
 
-        axs[0].plot(age, 10**LH, label = r'$log(L_H/L_{\odot})$', c='k')
+        #axs[0].plot(age, 10**LH, label = r'$log(L_H/L_{\odot})$', c='k')
         axs[0].plot(age, 10**LHe, label = r'$log(L_{He}/L_{\odot})$', c='r')
-        axs[0].plot(age, 10**Lgrav, label = r'$log(L_{grav}/L_{\odot})$', c='b')
+        #axs[0].plot(age, 10**Lgrav, label = r'$log(L_{grav}/L_{\odot})$', c='b')
         #axs[0].set_ylim(1e-20, 1e3)
-        #axs[0].set_ylim(1e-20, 1e3)
-        axs[0].set_xlim(1e0, np.max(history_data.star_age))
+        #axs[0].set_ylim(1e-5, 1e10)
+        #axs[0].set_xlim(1.2e7, 1.4e7)
 
         axs[0].legend(fontsize=14)
         axs[0].set_ylabel('$L/L_{\odot}$')
 
-
+        """
         axs[1].plot(age, 10**pp, label = 'PP Cycle', c='k')
         axs[1].plot(age, 10**cno, label = 'CNO Cycle', c='r')
         axs[1].plot(age, 10**tri_alfa, label = 'Triple Alpha', c='b')
         axs[1].legend(fontsize=14)
         axs[1].set_ylabel('$erg/s/g$')
         axs[1].set_xlabel('Stellar Age (Years)')
-        #axs[1].set_ylim(1e-20, 1e3)
-        axs[1].set_xlim(1e0, np.max(history_data.star_age))
+        axs[1].set_ylim(1e-6, 1e8)
+        axs[1].set_xlim(1.2e7, 1.4e7)
+
+        axs[0].plot(np.ones_like(age)*age[595-1], np.linspace(1e-10, 1e10, 3092), '--')
+        axs[1].plot(np.ones_like(age)*age[595-1], np.linspace(1e-10, 1e10, 3092), '--')
+        """
+
 
     def abundances(self):
 
@@ -122,12 +128,12 @@ class history_plot():
         #axc = fig.add_subplot(111)
         axs = fig.add_subplot(111)
         #axc.set_xscale('log')
-        axs.set_xscale('log')
+        #axs.set_xscale('log')
         #axc.set_yscale('log')
         axs.set_yscale('log')
         #axc.set_xlabel('Stellar Age (Years)')
         axs.set_xlabel('Stellar Age (Years)')
-        axc.set_ylabel('Abundance')
+        axs.set_ylabel('Abundance')
 
         #axc.plot(star_age, center_h1, label = 'H1, Centre')
         #axc.plot(star_age, center_he4, label = 'He4, Centre')
@@ -141,12 +147,12 @@ class history_plot():
         axs.plot(star_age, surface_he4, label = 'He4, Surface')
         axs.plot(star_age, surface_c12, label = 'C12, Surface')
         axs.plot(star_age, surface_n14, label = 'N14, Surface')
-        xs.plot(star_age, surface_o16, label = 'O16, Surface')
-        axs.set_ylim(1e-5,1)
+        axs.plot(star_age, surface_o16, label = 'O16, Surface')
+        axs.set_ylim(1e-5,1e1)
 
 
-        axc.legend(fontsize = 14)
-        #axs.legend(fontsize = 14)
+        #axc.legend(fontsize = 14)
+        axs.legend(fontsize = 14)
 
     def zams_tams(self):
 
@@ -201,12 +207,12 @@ class profile_plot():
         i=0
         for frac in [h1, he3, he4, c12, n14, o16]:
             #if np.min(frac) >= -100:
-            plt.plot(radius, frac, label = labels[i])
+            plt.plot(mass, frac, label = labels[i])
             #plt.ylim(-5,0)
             plt.legend(fontsize = 14)
-            plt.xscale('log')
+            #plt.xscale('log')
             plt.yscale('log')
-            plt.xlabel(r'$Radius$ $(R_{\odot})$', fontsize = 16)
+            plt.xlabel(r'$M/M_{\odot}$', fontsize = 16)
             plt.ylabel(r'$Mass Fraction$', fontsize = 16)
             i+=1
 
